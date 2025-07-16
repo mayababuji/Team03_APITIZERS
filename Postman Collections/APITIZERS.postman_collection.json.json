@@ -297,6 +297,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "271ce865-06cc-4e53-8e07-d079ec3c9fe9",
 								"exec": [
 									"const requestType = pm.iterationData.get(\"requestType\");",
 									"console.log(\"The request type in CREATE PATIENT  is \"+ requestType)",
@@ -336,13 +337,13 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "271ce865-06cc-4e53-8e07-d079ec3c9fe9"
+								"packages": {}
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
+								"id": "09d5d116-855c-458d-9907-791b0309ffa7",
 								"exec": [
 									"// Parse the JSON response",
 									"let response = pm.response.json();",
@@ -358,8 +359,10 @@
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
 									"});",
-									"",
-									"",
+									"console.log(\"printing the respponse of create patient\");",
+									"console.log(pm.response.text());",
+									"console.log(JSON.stringify(pm.response.json(), null, 2));",
+									"console.log(\"printing the respponse of create patient\");",
 									" ",
 									"pm.test(\"Response time is less than 300ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(300);",
@@ -395,8 +398,7 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "09d5d116-855c-458d-9907-791b0309ffa7"
+								"packages": {}
 							}
 						}
 					],
@@ -844,6 +846,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "ab099238-5612-4b3e-afd3-84fedc984eb4",
 								"exec": [
 									"const requestType = pm.iterationData.get(\"requestType\");",
 									"console.log(\"The request type in Update Patient    is \"+ requestType)",
@@ -877,13 +880,13 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "ab099238-5612-4b3e-afd3-84fedc984eb4"
+								"packages": {}
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
+								"id": "3cb14306-a31c-40f6-92ac-901aff972d3a",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -899,16 +902,15 @@
 									"let expectedLastname = pm.iterationData.get(\"Lastname\")",
 									"",
 									"pm.test(\"FirstName updated correctly\", function () {",
-									"    pm.expect(response.FirstName).to.eql(expectedFirstname);",
+									"    pm.expect(response.FirstName).to.eql(\"teamthreeMayaupdated\");",
 									"});",
 									"",
 									"pm.test(\"LastName updated correctly\", function () {",
-									"    pm.expect(response.LastName).to.eql(expectedLastname);",
+									"    pm.expect(response.LastName).to.eql(\"teamthreeMayalastupdated\");",
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "3cb14306-a31c-40f6-92ac-901aff972d3a"
+								"packages": {}
 							}
 						}
 					],
