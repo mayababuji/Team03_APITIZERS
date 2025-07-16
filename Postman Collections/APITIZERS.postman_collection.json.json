@@ -1054,7 +1054,21 @@
 		},
 		{
 			"name": "User Login",
-			"item": [],
+			"item": [
+				{
+					"name": "MAYA",
+					"id": "4e28d1ed-c52b-439d-ba01-23e79d7ac05d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			],
 			"id": "e4684441-ba3b-4c99-a48e-1957a055e43e"
 		},
 		{
