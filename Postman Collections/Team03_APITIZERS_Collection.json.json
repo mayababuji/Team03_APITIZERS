@@ -6,6 +6,11 @@
 	},
 	"item": [
 		{
+			"name": "Maya",
+			"item": [],
+			"id": "720e00f8-9c70-401c-b07c-5097b37a5a5b"
+		},
+		{
 			"name": "User login using admin credentials Copy",
 			"event": [
 				{
