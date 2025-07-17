@@ -360,6 +360,7 @@
 									"    pm.response.to.have.status(201);",
 									"});",
 									"console.log(\"printing the respponse of create patient\");",
+									"console.log(\"printing the respponse of create patient\");",
 									"console.log(pm.response.text());",
 									"console.log(JSON.stringify(pm.response.json(), null, 2));",
 									"console.log(\"printing the respponse of create patient\");",
