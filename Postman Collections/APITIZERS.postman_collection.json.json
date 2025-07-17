@@ -24,6 +24,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "847f9991-5239-452d-9723-545b96dab5ed",
 								"exec": [
 									"// Parse the JSON response",
 									"let response = pm.response.json();",
@@ -33,7 +34,7 @@
 									"",
 									"// Set it as a collection variable",
 									"pm.collectionVariables.set(\"dieticianToken\", token);",
-									"",
+									"console.log(\"Anita saved in collection variable: \" + token);",
 									"// Optional: log it for debug",
 									"console.log(\"Token saved in collection variable: \" + token);",
 									"pm.test(\"Status code is 200\", function () {",
@@ -42,13 +43,13 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "847f9991-5239-452d-9723-545b96dab5ed"
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "b17f7060-cfaf-4ced-bc7b-030073d3aacc",
 								"exec": [
 									"const requestType = pm.iterationData.get(\"requestType\");",
 									"console.log(\"The request type in POST Admin Login is \"+ requestType)",
@@ -68,8 +69,7 @@
 									"}"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "b17f7060-cfaf-4ced-bc7b-030073d3aacc"
+								"packages": {}
 							}
 						}
 					],
