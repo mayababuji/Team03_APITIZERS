@@ -80,6 +80,251 @@
 			"response": []
 		},
 		{
+			"name": "User login admin missing email/string",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9dad3ce9-adcb-4c68-9519-9499c661bbd0",
+						"exec": [
+							"pm.test(\"Status code is 401 - Unauthorized\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "c5b31527-5598-43af-a8f8-b68476389256",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/login"
+			},
+			"response": []
+		},
+		{
+			"name": "User login admin missing pwd",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9dad3ce9-adcb-4c68-9519-9499c661bbd0",
+						"exec": [
+							"pm.test(\"Status code is 401 - Unauthorized\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "c8769488-e9ff-425d-8406-702ab7cad784",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userLoginEmail\": \"Team707@gmail.com\"\n  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/login"
+			},
+			"response": []
+		},
+		{
+			"name": "User login admin Invalid email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9dad3ce9-adcb-4c68-9519-9499c661bbd0",
+						"exec": [
+							"pm.test(\"Status code is 401 - Unauthorized\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"   "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "e089ecba-7608-4549-add1-ab9c9eeee51e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userLoginEmail\": \"Team707gmail.com\",\n  \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/login"
+			},
+			"response": []
+		},
+		{
+			"name": "User login admin Incorrect pwd",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9dad3ce9-adcb-4c68-9519-9499c661bbd0",
+						"exec": [
+							"pm.test(\"Status code is 401 - Unauthorized\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "aab2e225-5261-437e-97b0-612574a27d0c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userLoginEmail\": \"Team707@gmail.com\",\n  \"password\": \"test1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/login"
+			},
+			"response": []
+		},
+		{
+			"name": "User login admin - Invalid Endpoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9dad3ce9-adcb-4c68-9519-9499c661bbd0",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "38cbb11e-6a15-4ed6-ba4c-5742d9ad9753",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userLoginEmail\": \"Team707@gmail.com\",\n  \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/loginme"
+			},
+			"response": []
+		},
+		{
+			"name": "User login admin - Invalid Method request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9dad3ce9-adcb-4c68-9519-9499c661bbd0",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "5e120040-1b08-40f3-866a-12f9c4adeef9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userLoginEmail\": \"Team707@gmail.com\",\n  \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/login"
+			},
+			"response": []
+		},
+		{
 			"name": "Creates a dietician with given dietician DTO Copy",
 			"event": [
 				{
@@ -173,6 +418,50 @@
 					}
 				},
 				"url": "{{baseURL}}/dietician"
+			},
+			"response": []
+		},
+		{
+			"name": "User login using dietician credential Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8abba0dd-3e27-4d30-ab7e-a5d639b0f9ad",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							" ",
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"dietician_token\", jsonData.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "c2e7b4d6-a791-49f8-bb0d-e4690f00a252",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userLoginEmail\": \"{{dietician_email}}\",\n  \"password\": \"{{login_Password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/login"
 			},
 			"response": []
 		},
@@ -993,50 +1282,6 @@
 			"response": []
 		},
 		{
-			"name": "User login using dietician credential Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "8abba0dd-3e27-4d30-ab7e-a5d639b0f9ad",
-						"exec": [
-							"",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							" ",
-							"var jsonData = pm.response.json();",
-							"pm.collectionVariables.set(\"dietician_token\", jsonData.token);"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "c2e7b4d6-a791-49f8-bb0d-e4690f00a252",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"userLoginEmail\": \"{{dietician_email}}\",\n  \"password\": \"{{login_Password}}\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{baseURL}}/login"
-			},
-			"response": []
-		},
-		{
 			"name": "Create new Patient Copy",
 			"event": [
 				{
@@ -1821,292 +2066,6 @@
 			"response": []
 		},
 		{
-			"name": "Get Patients details by ID Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "d1808e39-0aa4-4361-be48-87d33fc6954d",
-						"exec": [
-							"// 1. Status code is 200",
-							"pm.test(\"Test 1 : Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"// 2. Response is an object",
-							"pm.test(\"Responses is an object\", () => {",
-							"    let data = pm.response.json();",
-							"    pm.expect(typeof data).to.equal(\"object\");",
-							"});",
-							"// 3. Response is an object is not empty",
-							"pm.test(\"Test 3: Response object is not empty\", () => {",
-							"    let data = pm.response.json();",
-							"    pm.expect(Object.keys(data).length).to.be.above(0);",
-							"});",
-							"// 4. Patient expected fields are present in the response object.",
-							"pm.test(\"Test 4: Patient object has the expected fields\", () => {",
-							"    let data = pm.response.json();",
-							"    pm.expect(data).to.have.all.keys(",
-							"        \"patientId\",",
-							"        \"FirstName\",",
-							"        \"LastName\",",
-							"        \"ContactNumber\",",
-							"        \"Email\",",
-							"        \"Allergy\",",
-							"        \"FoodPreference\",",
-							"        \"CuisineCategory\",",
-							"        \"FileMorbidity\",",
-							"        \"FileMorbidityCondition\",",
-							"        \"DateOfBirth\",",
-							"        \"DieticianId\",",
-							"        \"Vitals\",",
-							"        \"LastVisitDate\"",
-							"    );",
-							"});",
-							"",
-							"// 5. Content-Type header is application/json",
-							"pm.test(\"Test 5: Content-Type header is application/json\", () => {",
-							"    pm.response.to.have.header(\"Content-Type\");",
-							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
-							"});",
-							"",
-							"// 6. Status text is OK",
-							"pm.test(\"Test 6: Status text is OK\", () => {",
-							"    pm.expect(pm.response.status).to.eql(\"OK\");",
-							"});",
-							"// 7. Validate fileId exists in FileMorbidity, FileMorbidityCondition, and Vitals",
-							"pm.test(\"Test 7: Validate fileId exists in FileMorbidity, FileMorbidityCondition, and Vitals\", () => {",
-							"    let data = pm.response.json();",
-							"",
-							"    // Check FileMorbidity",
-							"    pm.expect(data.FileMorbidity).to.be.an(\"object\");",
-							"    let fileIdsMorbidity = Object.keys(data.FileMorbidity);",
-							"    pm.expect(fileIdsMorbidity.length).to.be.above(0);",
-							"    console.log(\"FileMorbidity fileIds:\", fileIdsMorbidity);",
-							"",
-							"    // Check FileMorbidityCondition",
-							"    pm.expect(data.FileMorbidityCondition).to.be.an(\"object\");",
-							"    let fileIdsCondition = Object.keys(data.FileMorbidityCondition);",
-							"    pm.expect(fileIdsCondition.length).to.be.above(0);",
-							"    console.log(\"FileMorbidityCondition fileIds:\", fileIdsCondition);",
-							"",
-							"    // Check Vitals",
-							"    pm.expect(data.Vitals).to.be.an(\"object\");",
-							"    let fileIdsVitals = Object.keys(data.Vitals);",
-							"    pm.expect(fileIdsVitals.length).to.be.above(0);",
-							"    console.log(\"Vitals fileIds:\", fileIdsVitals);",
-							"",
-							"    // Optional: Validate the same fileId exists across all three (if business logic requires)",
-							"    let commonFileIds = fileIdsMorbidity.filter(id => fileIdsCondition.includes(id) && fileIdsVitals.includes(id));",
-							"    pm.expect(commonFileIds.length).to.be.above(0);",
-							"    console.log(\"Common fileIds across all of three:\", commonFileIds);",
-							"});",
-							"",
-							"// 8. Validate fileId exists in FileMorbidity, FileMorbidityCondition, and Vitals",
-							"pm.test(\"Test 8: Field types are correct\", () => {",
-							"    let data = pm.response.json();",
-							"",
-							"    pm.expect(data.patientId).to.be.a(\"number\");",
-							"    pm.expect(data.FirstName).to.be.a(\"string\");",
-							"    pm.expect(data.LastName).to.be.a(\"string\");",
-							"    pm.expect(data.ContactNumber).to.be.a(\"string\");",
-							"    pm.expect(data.Email).to.be.a(\"string\");",
-							"    pm.expect(data.Allergy).to.be.a(\"string\");",
-							"    pm.expect(data.FoodPreference).to.be.a(\"string\");",
-							"    pm.expect(data.CuisineCategory).to.be.a(\"string\");",
-							"    pm.expect(data.DateOfBirth).to.be.a(\"string\");",
-							"    pm.expect(data.DieticianId).to.be.a(\"number\");",
-							"});",
-							"",
-							"//9 email format validation",
-							"pm.test(\"Test 9:  Email format is valid\", () => {",
-							"    let data = pm.response.json();",
-							"    pm.expect(data.Email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);",
-							"});",
-							"",
-							"//10 Contact number is valid 10 digits",
-							"pm.test(\"Test 10: Contact number is valid 10 digits\", () => {",
-							"    let data = pm.response.json();",
-							"    pm.expect(data.ContactNumber).to.match(/^\\d{10}$/);",
-							"});",
-							"",
-							"//11 Date of Birth is a valid date",
-							"pm.test(\"Test 11: Date of Birth is a valid date\", () => {",
-							"    let data = pm.response.json();",
-							"    let dob = Date.parse(data.DateOfBirth);",
-							"    pm.expect(isNaN(dob)).to.be.false;",
-							"});",
-							"//12 Allergy, FoodPreference, CuisineCategory are valid values",
-							"pm.test(\"Test 12: Allergy, FoodPreference, CuisineCategory are valid values\", () => {",
-							"    let data = pm.response.json();",
-							"",
-							"    const allowedAllergies = [\"SOY\", \"ALMOND\", \"WALNUT\", \"PISTACHO\", \"SESAME\", \"PECAN\", \"CASHEW\", \"PEANUT\", \"EGG\", \"MILK\", \"NONE\"];",
-							"    const allowedPreferences = [\"Vegan\", \"Vegetarian\", \"Jain\", \"Eggitarian\", \"NonVeg\"];",
-							"    const allowedCuisine = [\"Indian\", \"South Indian\", \"Rajasthani\", \"Punjabi\", /*... add rest */];",
-							"",
-							"    pm.expect(allowedAllergies).to.include(data.Allergy);",
-							"    pm.expect(allowedPreferences).to.include(data.FoodPreference);",
-							"    pm.expect(allowedCuisine).to.include(data.CuisineCategory);",
-							"});",
-							"",
-							"//13 Vitals fields are correct types\"",
-							"pm.test(\"Test 13: Vitals fields are correct types\", () => {",
-							"    let data = pm.response.json();",
-							"    let vitals = data.Vitals;",
-							"    let fileIds = Object.keys(vitals);",
-							"",
-							"    fileIds.forEach(id => {",
-							"        let v = vitals[id];",
-							"        pm.expect(v.Weight).to.be.a(\"number\");",
-							"        pm.expect(v.Height).to.be.a(\"number\");",
-							"        pm.expect(v.Temperature).to.be.a(\"number\");",
-							"        pm.expect(v.SP).to.be.a(\"number\");",
-							"        pm.expect(v.DP).to.be.a(\"number\");",
-							"    });",
-							"});",
-							"",
-							"//14 FileMorbidity and FileMorbidityCondition fields are correct types\"",
-							"let response = pm.response.json();",
-							"",
-							"// Check FileMorbidity exists",
-							"pm.test(\"FileMorbidity exists in response\", function () {",
-							"    pm.expect(response).to.have.property(\"FileMorbidity\");",
-							"});",
-							"",
-							"// Extract FileMorbidity",
-							"let fileMorbidity = response.FileMorbidity;",
-							"",
-							"//  Loop through each fileID",
-							"for (let fileId in fileMorbidity) {",
-							"    if (fileMorbidity.hasOwnProperty(fileId)) {",
-							"        let morbidityData = fileMorbidity[fileId];",
-							"",
-							"        // Log fileID for clarity",
-							"        console.log(\"Validating FileID:\", fileId);",
-							"",
-							"        // Check if morbidityData has any keys",
-							"        let keys = Object.keys(morbidityData);",
-							"",
-							"        if (keys.length === 0) {",
-							"            pm.test(`FileID ${fileId} has no morbidity data`, function () {",
-							"                pm.expect(keys.length).to.eql(0);",
-							"            });",
-							"        } else {",
-							"            // Validate each nested key-value pair",
-							"            keys.forEach(function(key) {",
-							"                let value = morbidityData[key];",
-							"",
-							"                pm.test(`FileID ${fileId} has ${key} with value ${value}`, function () {",
-							"                    pm.expect(value).to.not.be.null;",
-							"                    pm.expect(value).to.not.be.undefined;",
-							"                    pm.expect(value).to.be.a('string');",
-							"                });",
-							"            });",
-							"        }",
-							"    }",
-							"}",
-							"//check for FileMorbidityConditions",
-							"let fileConditions = response.FileMorbidityCondition;",
-							"",
-							"// Define expected data per condition",
-							"let conditionExpectedData = {",
-							"    \"Prediabetic\": {",
-							"        \"HbA1c\": \"6.5 %\",",
-							"        \"Average Glucose\": \"131.0 mg/dl\"",
-							"    },",
-							"    \"Thyroid: Hyperthyroidism\": {",
-							"        \"T3\": \"6.3 ng/mL\",",
-							"        \"T4\": \"15.7 µg/dL\",",
-							"        \"TSH\": \"0.016 µIU/mL\"",
-							"    },",
-							"    \"Thyroid: Hypothyroidism\": {",
-							"        \"T4\": \"1.22 µg/dl\",",
-							"        \"TSH\": \"100.0 mIU/L\"",
-							"    },",
-							"    \"Blood Pressure: Normal\": {}",
-							"};",
-							"",
-							"pm.test(\"FileMorbidity exists\", function() {",
-							"    pm.expect(fileMorbidity).to.not.be.null;",
-							"});",
-							"",
-							"//Loop through each fileID",
-							"for (let fileId in fileMorbidity) {",
-							"    if (fileMorbidity.hasOwnProperty(fileId)) {",
-							"        let morbidityData = fileMorbidity[fileId];",
-							"        let conditionRaw = fileConditions[fileId];",
-							"",
-							"        // Trim condition to remove newline and spaces",
-							"        let condition = conditionRaw.trim();",
-							"",
-							"        console.log(`Validating fileID: ${fileId} with condition: ${condition}`);",
-							"",
-							"        // Get expected data for this condition",
-							"        let expectedData = conditionExpectedData[condition];",
-							"",
-							"        // If no expected data defined, skip",
-							"        if (!expectedData) {",
-							"            console.log(`No expected data defined for condition: ${condition}`);",
-							"            continue;",
-							"        }",
-							"",
-							"        // If expected data is empty (e.g. Blood Pressure), ensure no keys present",
-							"        if (Object.keys(expectedData).length === 0) {",
-							"            pm.test(`FileID ${fileId} should have no morbidity data`, function () {",
-							"                pm.expect(Object.keys(morbidityData).length).to.eql(0);",
-							"            });",
-							"        } else {",
-							"            // Validate each expected key and value",
-							"            for (let key in expectedData) {",
-							"                if (expectedData.hasOwnProperty(key)) {",
-							"                    pm.test(`FileID ${fileId} has ${key} with expected value ${expectedData[key]}`, function () {",
-							"                        pm.expect(morbidityData).to.have.property(key, expectedData[key]);",
-							"                    });",
-							"                }",
-							"            }",
-							"        }",
-							"    }",
-							"}",
-							"",
-							"",
-							"",
-							"",
-							"",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "d8838549-8382-4056-b373-4d630bd1dcb5",
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "4f592422-f8dd-4a1d-b75e-2bb197a5847e",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "{{dietician_token}}"
-					}
-				},
-				"method": "GET",
-				"header": [],
-				"url": "{{baseURL}}/patient/{{patient_id}}"
-			},
-			"response": []
-		},
-		{
 			"name": "Get all Patients",
 			"event": [
 				{
@@ -2524,6 +2483,292 @@
 				"method": "GET",
 				"header": [],
 				"url": "{{baseURL}}/patient/testReports/viewFile/{{fileID}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Patients details by ID Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d1808e39-0aa4-4361-be48-87d33fc6954d",
+						"exec": [
+							"// 1. Status code is 200",
+							"pm.test(\"Test 1 : Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"// 2. Response is an object",
+							"pm.test(\"Responses is an object\", () => {",
+							"    let data = pm.response.json();",
+							"    pm.expect(typeof data).to.equal(\"object\");",
+							"});",
+							"// 3. Response is an object is not empty",
+							"pm.test(\"Test 3: Response object is not empty\", () => {",
+							"    let data = pm.response.json();",
+							"    pm.expect(Object.keys(data).length).to.be.above(0);",
+							"});",
+							"// 4. Patient expected fields are present in the response object.",
+							"pm.test(\"Test 4: Patient object has the expected fields\", () => {",
+							"    let data = pm.response.json();",
+							"    pm.expect(data).to.have.all.keys(",
+							"        \"patientId\",",
+							"        \"FirstName\",",
+							"        \"LastName\",",
+							"        \"ContactNumber\",",
+							"        \"Email\",",
+							"        \"Allergy\",",
+							"        \"FoodPreference\",",
+							"        \"CuisineCategory\",",
+							"        \"FileMorbidity\",",
+							"        \"FileMorbidityCondition\",",
+							"        \"DateOfBirth\",",
+							"        \"DieticianId\",",
+							"        \"Vitals\",",
+							"        \"LastVisitDate\"",
+							"    );",
+							"});",
+							"",
+							"// 5. Content-Type header is application/json",
+							"pm.test(\"Test 5: Content-Type header is application/json\", () => {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"});",
+							"",
+							"// 6. Status text is OK",
+							"pm.test(\"Test 6: Status text is OK\", () => {",
+							"    pm.expect(pm.response.status).to.eql(\"OK\");",
+							"});",
+							"// 7. Validate fileId exists in FileMorbidity, FileMorbidityCondition, and Vitals",
+							"pm.test(\"Test 7: Validate fileId exists in FileMorbidity, FileMorbidityCondition, and Vitals\", () => {",
+							"    let data = pm.response.json();",
+							"",
+							"    // Check FileMorbidity",
+							"    pm.expect(data.FileMorbidity).to.be.an(\"object\");",
+							"    let fileIdsMorbidity = Object.keys(data.FileMorbidity);",
+							"    pm.expect(fileIdsMorbidity.length).to.be.above(0);",
+							"    console.log(\"FileMorbidity fileIds:\", fileIdsMorbidity);",
+							"",
+							"    // Check FileMorbidityCondition",
+							"    pm.expect(data.FileMorbidityCondition).to.be.an(\"object\");",
+							"    let fileIdsCondition = Object.keys(data.FileMorbidityCondition);",
+							"    pm.expect(fileIdsCondition.length).to.be.above(0);",
+							"    console.log(\"FileMorbidityCondition fileIds:\", fileIdsCondition);",
+							"",
+							"    // Check Vitals",
+							"    pm.expect(data.Vitals).to.be.an(\"object\");",
+							"    let fileIdsVitals = Object.keys(data.Vitals);",
+							"    pm.expect(fileIdsVitals.length).to.be.above(0);",
+							"    console.log(\"Vitals fileIds:\", fileIdsVitals);",
+							"",
+							"    // Optional: Validate the same fileId exists across all three (if business logic requires)",
+							"    let commonFileIds = fileIdsMorbidity.filter(id => fileIdsCondition.includes(id) && fileIdsVitals.includes(id));",
+							"    pm.expect(commonFileIds.length).to.be.above(0);",
+							"    console.log(\"Common fileIds across all of three:\", commonFileIds);",
+							"});",
+							"",
+							"// 8. Validate fileId exists in FileMorbidity, FileMorbidityCondition, and Vitals",
+							"pm.test(\"Test 8: Field types are correct\", () => {",
+							"    let data = pm.response.json();",
+							"",
+							"    pm.expect(data.patientId).to.be.a(\"number\");",
+							"    pm.expect(data.FirstName).to.be.a(\"string\");",
+							"    pm.expect(data.LastName).to.be.a(\"string\");",
+							"    pm.expect(data.ContactNumber).to.be.a(\"string\");",
+							"    pm.expect(data.Email).to.be.a(\"string\");",
+							"    pm.expect(data.Allergy).to.be.a(\"string\");",
+							"    pm.expect(data.FoodPreference).to.be.a(\"string\");",
+							"    pm.expect(data.CuisineCategory).to.be.a(\"string\");",
+							"    pm.expect(data.DateOfBirth).to.be.a(\"string\");",
+							"    pm.expect(data.DieticianId).to.be.a(\"number\");",
+							"});",
+							"",
+							"//9 email format validation",
+							"pm.test(\"Test 9:  Email format is valid\", () => {",
+							"    let data = pm.response.json();",
+							"    pm.expect(data.Email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);",
+							"});",
+							"",
+							"//10 Contact number is valid 10 digits",
+							"pm.test(\"Test 10: Contact number is valid 10 digits\", () => {",
+							"    let data = pm.response.json();",
+							"    pm.expect(data.ContactNumber).to.match(/^\\d{10}$/);",
+							"});",
+							"",
+							"//11 Date of Birth is a valid date",
+							"pm.test(\"Test 11: Date of Birth is a valid date\", () => {",
+							"    let data = pm.response.json();",
+							"    let dob = Date.parse(data.DateOfBirth);",
+							"    pm.expect(isNaN(dob)).to.be.false;",
+							"});",
+							"//12 Allergy, FoodPreference, CuisineCategory are valid values",
+							"pm.test(\"Test 12: Allergy, FoodPreference, CuisineCategory are valid values\", () => {",
+							"    let data = pm.response.json();",
+							"",
+							"    const allowedAllergies = [\"SOY\", \"ALMOND\", \"WALNUT\", \"PISTACHO\", \"SESAME\", \"PECAN\", \"CASHEW\", \"PEANUT\", \"EGG\", \"MILK\", \"NONE\"];",
+							"    const allowedPreferences = [\"Vegan\", \"Vegetarian\", \"Jain\", \"Eggitarian\", \"NonVeg\"];",
+							"    const allowedCuisine = [\"Indian\", \"South Indian\", \"Rajasthani\", \"Punjabi\", /*... add rest */];",
+							"",
+							"    pm.expect(allowedAllergies).to.include(data.Allergy);",
+							"    pm.expect(allowedPreferences).to.include(data.FoodPreference);",
+							"    pm.expect(allowedCuisine).to.include(data.CuisineCategory);",
+							"});",
+							"",
+							"//13 Vitals fields are correct types\"",
+							"pm.test(\"Test 13: Vitals fields are correct types\", () => {",
+							"    let data = pm.response.json();",
+							"    let vitals = data.Vitals;",
+							"    let fileIds = Object.keys(vitals);",
+							"",
+							"    fileIds.forEach(id => {",
+							"        let v = vitals[id];",
+							"        pm.expect(v.Weight).to.be.a(\"number\");",
+							"        pm.expect(v.Height).to.be.a(\"number\");",
+							"        pm.expect(v.Temperature).to.be.a(\"number\");",
+							"        pm.expect(v.SP).to.be.a(\"number\");",
+							"        pm.expect(v.DP).to.be.a(\"number\");",
+							"    });",
+							"});",
+							"",
+							"//14 FileMorbidity and FileMorbidityCondition fields are correct types\"",
+							"let response = pm.response.json();",
+							"",
+							"// Check FileMorbidity exists",
+							"pm.test(\"FileMorbidity exists in response\", function () {",
+							"    pm.expect(response).to.have.property(\"FileMorbidity\");",
+							"});",
+							"",
+							"// Extract FileMorbidity",
+							"let fileMorbidity = response.FileMorbidity;",
+							"",
+							"//  Loop through each fileID",
+							"for (let fileId in fileMorbidity) {",
+							"    if (fileMorbidity.hasOwnProperty(fileId)) {",
+							"        let morbidityData = fileMorbidity[fileId];",
+							"",
+							"        // Log fileID for clarity",
+							"        console.log(\"Validating FileID:\", fileId);",
+							"",
+							"        // Check if morbidityData has any keys",
+							"        let keys = Object.keys(morbidityData);",
+							"",
+							"        if (keys.length === 0) {",
+							"            pm.test(`FileID ${fileId} has no morbidity data`, function () {",
+							"                pm.expect(keys.length).to.eql(0);",
+							"            });",
+							"        } else {",
+							"            // Validate each nested key-value pair",
+							"            keys.forEach(function(key) {",
+							"                let value = morbidityData[key];",
+							"",
+							"                pm.test(`FileID ${fileId} has ${key} with value ${value}`, function () {",
+							"                    pm.expect(value).to.not.be.null;",
+							"                    pm.expect(value).to.not.be.undefined;",
+							"                    pm.expect(value).to.be.a('string');",
+							"                });",
+							"            });",
+							"        }",
+							"    }",
+							"}",
+							"//check for FileMorbidityConditions",
+							"let fileConditions = response.FileMorbidityCondition;",
+							"",
+							"// Define expected data per condition",
+							"let conditionExpectedData = {",
+							"    \"Prediabetic\": {",
+							"        \"HbA1c\": \"6.5 %\",",
+							"        \"Average Glucose\": \"131.0 mg/dl\"",
+							"    },",
+							"    \"Thyroid: Hyperthyroidism\": {",
+							"        \"T3\": \"6.3 ng/mL\",",
+							"        \"T4\": \"15.7 µg/dL\",",
+							"        \"TSH\": \"0.016 µIU/mL\"",
+							"    },",
+							"    \"Thyroid: Hypothyroidism\": {",
+							"        \"T4\": \"1.22 µg/dl\",",
+							"        \"TSH\": \"100.0 mIU/L\"",
+							"    },",
+							"    \"Blood Pressure: Normal\": {}",
+							"};",
+							"",
+							"pm.test(\"FileMorbidity exists\", function() {",
+							"    pm.expect(fileMorbidity).to.not.be.null;",
+							"});",
+							"",
+							"//Loop through each fileID",
+							"for (let fileId in fileMorbidity) {",
+							"    if (fileMorbidity.hasOwnProperty(fileId)) {",
+							"        let morbidityData = fileMorbidity[fileId];",
+							"        let conditionRaw = fileConditions[fileId];",
+							"",
+							"        // Trim condition to remove newline and spaces",
+							"        let condition = conditionRaw.trim();",
+							"",
+							"        console.log(`Validating fileID: ${fileId} with condition: ${condition}`);",
+							"",
+							"        // Get expected data for this condition",
+							"        let expectedData = conditionExpectedData[condition];",
+							"",
+							"        // If no expected data defined, skip",
+							"        if (!expectedData) {",
+							"            console.log(`No expected data defined for condition: ${condition}`);",
+							"            continue;",
+							"        }",
+							"",
+							"        // If expected data is empty (e.g. Blood Pressure), ensure no keys present",
+							"        if (Object.keys(expectedData).length === 0) {",
+							"            pm.test(`FileID ${fileId} should have no morbidity data`, function () {",
+							"                pm.expect(Object.keys(morbidityData).length).to.eql(0);",
+							"            });",
+							"        } else {",
+							"            // Validate each expected key and value",
+							"            for (let key in expectedData) {",
+							"                if (expectedData.hasOwnProperty(key)) {",
+							"                    pm.test(`FileID ${fileId} has ${key} with expected value ${expectedData[key]}`, function () {",
+							"                        pm.expect(morbidityData).to.have.property(key, expectedData[key]);",
+							"                    });",
+							"                }",
+							"            }",
+							"        }",
+							"    }",
+							"}",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d8838549-8382-4056-b373-4d630bd1dcb5",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "4f592422-f8dd-4a1d-b75e-2bb197a5847e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/patient/{{patient_id}}"
 			},
 			"response": []
 		},
@@ -2967,40 +3212,6 @@
 			"response": []
 		},
 		{
-			"name": "Delete invalid PatientId",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "7ef6e6fb-c3a3-445b-9d45-965169512d2e",
-						"exec": [
-							"pm.test(\"Status code is 404\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "378c0e82-bee2-48ff-838e-b55b195a4a5b",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "{{dietician_token}}"
-					}
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": "{{baseURL}}/patient/600000"
-			},
-			"response": []
-		},
-		{
 			"name": "Delete patient by userId Copy",
 			"event": [
 				{
@@ -3053,6 +3264,139 @@
 				"method": "DELETE",
 				"header": [],
 				"url": "{{baseURL}}/patient/{{patient_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Dietician-Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc9b8800-88f1-41cb-91d5-bf36dc7226c9",
+						"exec": [
+							"pm.test(\"Status code is 200 - Logout Successful\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "860808de-d626-45a5-a9c5-fa0bb7506094",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/logoutdietician"
+			},
+			"response": []
+		},
+		{
+			"name": "Dietician Logout -Invalid End point",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc9b8800-88f1-41cb-91d5-bf36dc7226c9",
+						"exec": [
+							"pm.test(\"Status code is 404 - Invalid Endpoint\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "12ff5c74-10b6-4205-9f7e-67df86d3e8ca",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/logoutdieticians"
+			},
+			"response": []
+		},
+		{
+			"name": "Dietician Logout -Invalid Method",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc9b8800-88f1-41cb-91d5-bf36dc7226c9",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "6b7a086c-0f8d-41a8-96d8-b8e629abf632",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"url": "{{baseURL}}/logoutdietician"
+			},
+			"response": []
+		},
+		{
+			"name": "Dietician Logout -Invalid token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc9b8800-88f1-41cb-91d5-bf36dc7226c9",
+						"exec": [
+							"pm.test(\"Status code is 401 - Unauthorized\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "b3eaa8dc-e09e-4b9a-928a-211b356c10f8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "{{baseURL}}/logoutdietician"
 			},
 			"response": []
 		},
@@ -3253,6 +3597,40 @@
 				"url": "{{baseURL}}/dietician/{{dietician_id}}"
 			},
 			"response": []
+		},
+		{
+			"name": "Delete invalid PatientId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7ef6e6fb-c3a3-445b-9d45-965169512d2e",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "378c0e82-bee2-48ff-838e-b55b195a4a5b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/patient/600000"
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -3281,88 +3659,83 @@
 	],
 	"variable": [
 		{
-			"id": "c9e55c08-4046-495a-8119-abe2a8205f81",
+			"id": "b1b35acb-115a-4f7f-b9a6-9ae1480d0979",
 			"key": "baseURL",
 			"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician"
 		},
 		{
-			"id": "55b4df54-2c99-4b47-988e-975718d92e42",
+			"id": "1c93dddd-a472-4401-a47b-e6eae8cc9123",
 			"key": "admin_token",
 			"value": ""
 		},
 		{
-			"id": "583ef785-dea9-4d8b-b473-d74e0c13d19a",
+			"id": "1e6e8e82-8923-466f-a413-adf579944cd6",
 			"key": "dietician_id",
 			"value": ""
 		},
 		{
-			"id": "b55357db-5e94-4c11-8f7a-aeacde67774b",
+			"id": "135802c6-b2e7-4404-ab39-27aaf5657011",
 			"key": "dietician_email",
 			"value": ""
 		},
 		{
-			"id": "074a91af-5338-4b01-b462-51259daf9bd8",
+			"id": "e712488f-26ad-4489-afeb-64c5654d567e",
 			"key": "login_Password",
 			"value": ""
 		},
 		{
-			"id": "01d97d45-7b22-4b79-b8f2-e212e02853fe",
+			"id": "9be976ae-f969-4612-8ad4-ce0c2cedc54c",
 			"key": "dietician_token",
 			"value": ""
 		},
 		{
-			"id": "2a1cb593-98e5-4b95-a86f-1a3a188a342d",
+			"id": "88b1266e-c134-4874-a7be-5baa379daf9e",
 			"key": "patient_id",
 			"value": ""
 		},
 		{
-			"id": "4f9f98d7-5f1a-407c-9f4f-3db1f97ea826",
+			"id": "fdcf61b6-eb9b-43b9-a4d1-f7f76fd84e63",
 			"key": "patientInfo",
 			"value": ""
 		},
 		{
-			"id": "c1902a9c-ed92-46ca-b86b-64b9d5680ff4",
+			"id": "b814671e-3b63-4000-9562-51820f53c48e",
 			"key": "updatePatientInfo",
 			"value": ""
 		},
 		{
-			"id": "6d80d7f1-6c18-4ec5-bffd-259a128a9337",
+			"id": "446990ab-891b-43ee-b666-7e07b7060c41",
 			"key": "fileID",
 			"value": ""
 		},
 		{
-			"id": "d7b0ffd9-0ed5-4c43-8840-001c16e3e464",
+			"id": "32bc24a4-0ad7-4f51-a638-14f22060f8ef",
 			"key": "vitalInfo",
 			"value": ""
 		},
 		{
-			"id": "a0d0e0fc-9ecc-4807-9e1f-a352dbca85d0",
+			"id": "5be62656-5262-41f9-acd8-f73556fc2b91",
 			"key": "updateVitalInfo",
 			"value": ""
 		},
 		{
-			"id": "7d4ed1a1-74a9-4b06-a7e2-8ca4d43d8699",
+			"id": "2bdb5162-19f5-434e-abd1-4dd5f5df0961",
 			"key": "Prediabeticfile",
 			"value": ""
 		},
 		{
-			"id": "0069459b-5343-49d1-a971-d6bc9ee1be08",
+			"id": "2bacc9c3-5d80-4e22-ad07-d0260e2df300",
 			"key": "Hyperthyroidismfile",
 			"value": ""
 		},
 		{
-			"id": "23a8d404-0ad2-4fc8-80e0-bc22eeed9a6a",
+			"id": "ea5394a1-18ce-4e1b-9820-fb8addf1bd39",
 			"key": "Hypothyroidismfile",
 			"value": ""
 		},
 		{
-			"id": "47523fdc-c0db-49f4-b217-a8e48aebeba6",
+			"id": "2e081f62-28f9-4498-958d-a7448e9638b2",
 			"key": "patientDeleted",
-			"value": ""
-		},
-		{
-			"id": "f267ae73-5f3a-421d-9fb2-7599b32beef1",
-			"key": "invalidToken",
 			"value": ""
 		}
 	]
