@@ -325,6 +325,597 @@
 			"response": []
 		},
 		{
+			"name": "Get morbidity/Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test 1 : Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "c379e028-5306-41a6-a047-9b58e512816d"
+					}
+				}
+			],
+			"id": "bf1609ba-75a1-4860-b98e-8c82e909b6bf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity"
+			},
+			"response": []
+		},
+		{
+			"name": "No authorization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "f4aaca9d-be5e-4819-8fe9-2b61a05811c0"
+					}
+				}
+			],
+			"id": "23493fb8-bcbb-4ef1-8a61-a23718cb2c9a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity"
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid end point",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "9260f20a-752c-4c56-86c2-ae64d6dede37"
+					}
+				}
+			],
+			"id": "fd15daf5-cd17-47de-b053-9f6be10afdf5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidityabc"
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "f8b376f8-a7c9-4cc4-bd5a-8570f6642fc2"
+					}
+				}
+			],
+			"id": "f6af9e4f-871e-4a83-a552-7478c351c313",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity"
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid method",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "fae1a9dc-ada7-4c3e-af24-3efc94dba73a"
+					}
+				}
+			],
+			"id": "a627da9c-d61b-4dd3-bda1-997ccae0e036",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity"
+			},
+			"response": []
+		},
+		{
+			"name": "correct credentials MorbidityTestName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test 1 : Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "95242fbe-ca6d-4ce1-a8b1-37cdf6ccc2fe"
+					}
+				}
+			],
+			"id": "f8217b34-afdd-4d4b-a748-3a3285e41344",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity/T4"
+			},
+			"response": []
+		},
+		{
+			"name": "No Auth Morbidity Test Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401 - Unauthorized\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "59846d78-2e23-4f07-8871-f7e3d7167c11"
+					}
+				}
+			],
+			"id": "b8fb85a2-f025-4ef6-aa0d-a449f58bc5a6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity/T4"
+			},
+			"response": []
+		},
+		{
+			"name": "Invaid End point MorbidityTestName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "fa99b2a9-8910-478c-b9fd-c25461de189c"
+					}
+				}
+			],
+			"id": "ee5f753e-4f6b-4d6c-8040-0b76fb6ed313",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity/T444"
+			},
+			"response": []
+		},
+		{
+			"name": "No end point MorbidityTestName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "234218c6-a563-49a1-8ac1-6bbfcf41b989"
+					}
+				}
+			],
+			"id": "21846c0e-cc82-4a59-a92a-07eec1d5906b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid token Morbidity Test Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "849af23d-25f6-498a-8bdf-d3ef6777c42d"
+					}
+				}
+			],
+			"id": "86f128bc-94d9-4f99-befb-9d4fb1eaeefe",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity/T4"
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong Test name value (alphabetic)MorbidityTestName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "037b811a-287b-4632-8c31-eb8fc0cd1132"
+					}
+				}
+			],
+			"id": "0b9b322d-d30f-47e8-818e-17b460b0f829",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity/Tttt"
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong test name value(numeric)MorbidityTestName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "2e5ebd67-6e8e-4a6e-8b14-a83f4f7a0ba5"
+					}
+				}
+			],
+			"id": "db41bb2e-d358-44e6-803e-9aa8e284874c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity/444"
+			},
+			"response": []
+		},
+		{
+			"name": "Empty test name value MorbidityTestName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "839abb68-6f9d-4b51-aada-0bbc4b7d980f"
+					}
+				}
+			],
+			"id": "23a6fb10-8477-4c6c-94ec-7a168a0d7693",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity/    "
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong Test name value(sp. char.)MorbidityTestName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "2cbc7acc-8bcd-4735-b6c9-f44418edafaa"
+					}
+				}
+			],
+			"id": "9c7a3916-c17e-42a0-84be-bf5975390c2f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/morbidity/$$$"
+			},
+			"response": []
+		},
+		{
 			"name": "Creates a dietician with given dietician DTO Copy",
 			"event": [
 				{
@@ -462,6 +1053,514 @@
 					}
 				},
 				"url": "{{baseURL}}/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Get morbidity dietician Anita",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Test 1 : Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "e738e3fd-92c9-453a-9356-d4c100d80239"
+					}
+				}
+			],
+			"id": "79584d0a-35de-45a1-9639-5bd63ff4c8b7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity"
+			},
+			"response": []
+		},
+		{
+			"name": "no authorization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401 - Unauthorized\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "0b19d73e-03f7-430b-ae7c-7689d1be937f"
+					}
+				}
+			],
+			"id": "5dc8a144-ab4c-485c-a83a-8b51771f960f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity"
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid End point",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "9c1e0275-29c4-4261-948a-321bfeb0c656"
+					}
+				}
+			],
+			"id": "d130424d-21c6-48e8-899d-83da1c6364d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity/T444"
+			},
+			"response": []
+		},
+		{
+			"name": "No End point",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "79d23d28-ffd4-402a-aabe-eb4a70275224"
+					}
+				}
+			],
+			"id": "bba3f1d1-0cd8-4da0-921d-b152b32b71fb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "invalid token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "ea762051-db5f-4084-8dd3-dadbee2283f0"
+					}
+				}
+			],
+			"id": "417459ee-447b-473e-9ba7-fd65535fcb09",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity"
+			},
+			"response": []
+		},
+		{
+			"name": "invalid method",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "62b157f1-1d31-4449-9c76-db4e6e543dc4"
+					}
+				}
+			],
+			"id": "d752ac0e-e137-4fc1-aaba-f5660ef37c12",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"url": "{{baseURL}}/morbidity"
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid End Pt Morbidity test nameCopy 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "9ae97fb4-c63f-47c3-b08e-5e657f572823"
+					}
+				}
+			],
+			"id": "34857a85-6bed-4002-a36e-1a802da0998f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity/abc"
+			},
+			"response": []
+		},
+		{
+			"name": "Correct Credentials Morbidity Test name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Test 1 : Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "8916b390-a104-4f09-9129-c6c89be9c555"
+					}
+				}
+			],
+			"id": "6557a406-2852-4fcf-a870-da8dd05bc3fd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity/T4"
+			},
+			"response": []
+		},
+		{
+			"name": "No Auth. Morbidity test name Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "125dbeed-fbe2-4f0e-b346-f12f88bc061c"
+					}
+				}
+			],
+			"id": "dc53f318-6510-48e4-a011-e623aff41f05",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity/T4"
+			},
+			"response": []
+		},
+		{
+			"name": "No End point Morbidity Test name Copy 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "eeed1caa-ab52-4611-9f74-ea3d760e4d94"
+					}
+				}
+			],
+			"id": "e0057a38-5403-4d56-91f8-f18a1668f3e6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid token Morbidity Test name Copy 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "1030147f-aea9-43c6-8736-5b1b3efc90bd"
+					}
+				}
+			],
+			"id": "01971f07-d391-48b6-af1f-8d19cf508881",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity/T4"
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong test name value(alphabetic) Morbidity Test name Copy 6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "547f8122-dc60-4e5b-b5aa-d561fc743c7c"
+					}
+				}
+			],
+			"id": "8498fcca-0b90-4a8c-a2ba-0f7c0e643bad",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity/xyz"
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong test name value(numeric) Morbidity test name Copy 7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "127b0966-e61f-47f5-9a8c-d88d913e1b8b"
+					}
+				}
+			],
+			"id": "400c8487-8d76-4398-ba47-04145de7f523",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity/1234"
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong test name (sp. char.) Morbidity test name Copy 8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "19ea2c49-669b-45db-a1fa-681be607d6a2"
+					}
+				}
+			],
+			"id": "b5f9e329-c85a-45be-b4d6-c18d91d974a0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity/$$$"
+			},
+			"response": []
+		},
+		{
+			"name": "Empty test name value Morbidity Test name Copy 9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "c36830b7-32ad-47ec-8bc2-445ed4a7bb4b"
+					}
+				}
+			],
+			"id": "f19b4d11-e3f7-4ba1-b30a-b962f52e6899",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{dietician_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/morbidity/    "
 			},
 			"response": []
 		},
