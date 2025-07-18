@@ -1217,11 +1217,7 @@
 			},
 			"request": {
 				"auth": {
-					"type": "basic",
-					"basic": {
-						"password": "{{login_Password}}",
-						"username": "{{dietician_email}}"
-					}
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [],
