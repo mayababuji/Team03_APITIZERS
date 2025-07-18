@@ -775,6 +775,422 @@
 			"response": []
 		},
 		{
+			"name": "GET Dietician with ID 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a6cf721d-db69-4873-a14b-3241dacec8c9",
+						"exec": [
+							"// 1. Status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"// 2. Response is an object\r",
+							"pm.test(\"Response is an object\", () => {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(typeof data).to.equal(\"object\");\r",
+							"});\r",
+							"// 3. Response is an object is not empty\r",
+							"pm.test(\"Response object is not empty\", () => {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(Object.keys(data).length).to.be.above(0);\r",
+							"});\r",
+							"// 4. User expected fields are present in the response object.\r",
+							"  pm.test(\"Dietician object has expected fields\", () => {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(data).to.have.all.keys(\r",
+							"        \"id\",\r",
+							"  \"Firstname\",\r",
+							"  \"Lastname\",\r",
+							"  \"ContactNumber\",\r",
+							"  \"DateOfBirth\",\r",
+							"  \"Email\",\r",
+							"  \"HospitalName\",\r",
+							"  \"HospitalStreet\",\r",
+							"  \"HospitalCity\",\r",
+							"  \"HospitalPincode\",\r",
+							"  \"Education\"\r",
+							"\r",
+							"    );\r",
+							"});\r",
+							"\r",
+							"// 5. Content-Type header is application/json\r",
+							"pm.test(\"Content-Type header is application/json\", () => {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// 6. Status text is OK\r",
+							"pm.test(\"Status text is OK\", () => {\r",
+							"    pm.expect(pm.response.status).to.eql(\"OK\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// 7. \r",
+							"const Expectedschema = {\r",
+							"  \r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"ContactNumber\": {\"type\": \"string\"},\r",
+							"    \"DateOfBirth\": {\"type\": \"string\"},\r",
+							"    \"Education\": {\"type\": \"string\"},\r",
+							"    \"Email\": {\"type\": \"string\"},\r",
+							"    \"Firstname\": {\"type\": \"string\"},\r",
+							"    \"HospitalCity\": {\"type\": \"string\"},\r",
+							"    \"HospitalName\": {\"type\": \"string\"},\r",
+							"    \"HospitalPincode\": {\"type\": \"string\"},\r",
+							"    \"HospitalStreet\": {\"type\": \"string\"},\r",
+							"    \"Lastname\": {\"type\": \"string\"},\r",
+							"    \"id\": {\"type\": \"integer\"},\r",
+							"    \r",
+							"  },\r",
+							"  \"required\": [ \"ContactNumber\",\"DateOfBirth\",\"Education\",\"Email\",\"Firstname\",\"HospitalCity\",\"HospitalName\",\"HospitalPincode\",\"HospitalStreet\",\r",
+							"    \"Lastname\",\"id\"]\r",
+							"};\r",
+							"// Test script\r",
+							"pm.test(\"Response should match schema\", function () {\r",
+							"  pm.response.to.have.jsonSchema(Expectedschema);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//8 email format validation\r",
+							"pm.test(\"Test 9:  Email format is valid\", () => {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(data.Email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);\r",
+							"});\r",
+							"\r",
+							"//9 Contact number is valid 10 digits\r",
+							"pm.test(\"Contact number is valid 10 digits\", () => {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(data.ContactNumber).to.match(/^\\d{10}$/);\r",
+							"});\r",
+							"\r",
+							"//10 Date of Birth is a valid date\r",
+							"pm.test(\"Test Date of Birth is a valid date\", () => {\r",
+							"    let data = pm.response.json();\r",
+							"    let dob = Date.parse(data.DateOfBirth);\r",
+							"    pm.expect(isNaN(dob)).to.be.false;\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "7638487f-95ff-4a87-8d39-23975b0033a7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/dietician/{{dietician_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "GET dietician with id  401",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2044f6e9-f2bd-40f2-98b9-694bdf696f85",
+						"exec": [
+							"pm.test(\"Status code is 401 no token given\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "06a1918c-e3fd-4baa-bb5f-b4029a4ec7da",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/dietician/{{dietician_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dietician with ID 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3118316-1d9c-4483-ab40-08563ff22d4f",
+						"exec": [
+							"pm.test(\"Status code is 404 - Not Found\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"/*\r",
+							"let response = pm.response.json();\r",
+							"pm.test(\"Error code is 'Not Found'\", function () {\r",
+							"    pm.expect(response.errorCode).to.eql(\"Not_Found\");\r",
+							"});\r",
+							"\r",
+							"let response = pm.response.json();\r",
+							"pm.test(\"Error message is 'Dietician does not exists'\", function () {\r",
+							"    pm.expect(response.errorMessage).to.includes(\"Dietican with  does not exists\");\r",
+							"}); */\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "cdb35c49-3d49-422b-a00c-b5fdebcd5a9d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/dietician"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dietician with ID 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba11f947-da51-432b-890b-d17bc048c820",
+						"exec": [
+							"pm.test(\"Status code is 200 dietician deleted\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Deleted dietician successfully \");\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//User expected fields are present in the response object.\r",
+							"  pm.test(\"Dietician object has expected fields\", () => {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(data).to.have.all.keys( \"message\",\"data\",\"timestamp\");\r",
+							"\r",
+							"let responseJson = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Data object has all expected keys\", function () {\r",
+							"    pm.expect(responseJson.data).to.have.all.keys(\"id\",\"Firstname\",\"Lastname\",\"ContactNumber\",\"DateOfBirth\",\"Email\",\"HospitalName\", \"HospitalStreet\",\"HospitalCity\", \"HospitalPincode\",  \"Education\");\r",
+							"});\r",
+							"\r",
+							"    //inside data values\r",
+							"   //     \"id\",\"Firstname\",\"Lastname\",\"ContactNumber\",\"DateOfBirth\",\"Email\",\"HospitalName\",  \"HospitalStreet\",  \"HospitalCity\", \"HospitalPincode\",  \"Education\"\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"//var jasonData= pm.response.jason();\r",
+							"//pm.test(\" verifuy message \", function(){\r",
+							"//pm.expect(jasonData.message).to.eql(\"message\");\r",
+							"//pm.expect(jasonData.message).to.eql(\"Deleted dietician successfully with id-911\");\r",
+							"\r",
+							"\r",
+							"//});\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Verify message\", function () {\r",
+							"    pm.expect(jsonData.message).to.include(\"Deleted dietician successfully with\");\r",
+							"});\r",
+							"\r",
+							"const responseSchema ={\r",
+							"type: \"object\",\r",
+							"properties:{\r",
+							"message:{\"type\":\"string\"},\r",
+							"data:{\r",
+							"type:\"object\",\r",
+							"properties:{\r",
+							"\"id\":{\"type\":\"integer\"},\r",
+							" \"Firstname\": {\"type\": \"string\"},\"Lastname\": {\"type\": \"string\"}, \"ContactNumber\": {\"type\": \"string\"},\"DateOfBirth\": {\"type\": \"string\"},\"Email\": {\"type\": \"string\"},\"HospitalName\": {\"type\": \"string\"},\"HospitalStreet\": {\"type\": \"string\"}, \"HospitalPincode\": {\"type\": \"string\"},\"HospitalCity\": {\"type\": \"string\"},\"Education\": {\"type\": \"string\"}},\r",
+							"\"required\": [ \"id\",\"Firstname\",\"Lastname\",\"ContactNumber\",\"DateOfBirth\",\"Email\",\"HospitalName\",\"HospitalStreet\",\"HospitalPincode\",\"HospitalCity\",\"Education\"],\r",
+							"},\r",
+							"timestamp:{\"type\":\"string\"},\r",
+							"},\r",
+							"\"required\":[\"message\",\"data\",\"timestamp\"],\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Response should match schema\", function () {\r",
+							"  pm.response.to.have.jsonSchema(responseSchema);\r",
+							"}); \r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "3ab4c7e0-0edf-4076-9aea-ac4c79506e47",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/dietician/{{dietician_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dietician with ID 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40570dc5-7318-46ad-8b42-1d7d7d721c17",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"let response = pm.response.json();\r",
+							"pm.test(\"Error message is 'Dietician does not exists'\", function () {\r",
+							"    pm.expect(response.errorMessage).to.includes(\"Dietican with  does not exists\");\r",
+							"});\r",
+							"/*\r",
+							"let response = pm.response.json();\r",
+							"pm.test(\"Error message is 'Not Found'\", function () {\r",
+							"    pm.expect(response.error).to.eql(\"Not Found\");\r",
+							"});*/\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "0d56c5d9-216f-453d-8f5b-47e7801fb414",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/dietician/{{dietician_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dietician with ID 401",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9217da7-be19-475d-9647-3b6b9ae386cd",
+						"exec": [
+							"pm.test(\"Status code is 401 no auth access\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"/*\r",
+							"let response = pm.response.json();\r",
+							"pm.test(\"Error message is 'Unauthorized'\", function () {\r",
+							"    pm.expect(response.error).to.includes(\"Unauthorized\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"let response = pm.response.json();\r",
+							"pm.test(\"Message is ' An unexpected error occurred '\",function(){\r",
+							"    pm.expect(response.message).to.equal(\"An unexpected error occurred\");\r",
+							"}); */ \r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "85c0c9e6-84d1-4382-bef5-f80774beb9d8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/dietician/{{dietician_id}}"
+			},
+			"response": []
+		},
+		{
 			"name": "User login using dietician credential Copy",
 			"event": [
 				{
@@ -801,7 +1217,11 @@
 			},
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": {
+						"password": "{{login_Password}}",
+						"username": "{{dietician_email}}"
+					}
 				},
 				"method": "POST",
 				"header": [],
@@ -1045,6 +1465,7 @@
 							"pm.test(\"Test 1 : Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
+							"/*",
 							"// 2. Response is an object",
 							"pm.test(\"Responses is an object\", () => {",
 							"    let data = pm.response.json();",
@@ -1154,7 +1575,8 @@
 							"",
 							"    const allowedAllergies = [\"SOY\", \"ALMOND\", \"WALNUT\", \"PISTACHO\", \"SESAME\", \"PECAN\", \"CASHEW\", \"PEANUT\", \"EGG\", \"MILK\", \"NONE\"];",
 							"    const allowedPreferences = [\"Vegan\", \"Vegetarian\", \"Jain\", \"Eggitarian\", \"NonVeg\"];",
-							"    const allowedCuisine = [\"Indian\", \"South Indian\", \"Rajasthani\", \"Punjabi\", /*... add rest */];",
+							"    const allowedCuisine = [\"Indian\", \"South Indian\", \"Rajasthani\", \"Punjabi\", /*... add rest */",
+							"    /*",
 							"",
 							"    pm.expect(allowedAllergies).to.include(data.Allergy);",
 							"    pm.expect(allowedPreferences).to.include(data.FoodPreference);",
@@ -1277,8 +1699,9 @@
 							"                }",
 							"            }",
 							"        }",
-							"    }",
+							"    } ",
 							"}",
+							"*/",
 							"",
 							"",
 							"",
@@ -1803,6 +2226,40 @@
 				}
 			],
 			"id": "01ad530c-d21c-4b04-af92-7e4fca1658eb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/dietician/{{dietician_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dietician with id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "af9281e1-c09c-4dfa-9012-0f2c7491fe5b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "960ca07f-9482-40ed-a96c-528d7cd9b122",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
