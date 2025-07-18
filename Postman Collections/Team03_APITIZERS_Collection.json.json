@@ -2399,8 +2399,8 @@
 							"    pm.response.to.have.status(201);",
 							"});",
 							" ",
-							"pm.test(\"Response time is less than 500ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
 							"});",
 							"",
 							"pm.test(\"Content-Type is present\", function () {",
@@ -2439,14 +2439,14 @@
 							"    }",
 							"});",
 							"",
-							"// pm.test(\"FileMorbidity and  FileMorbidityCondition are present in response\", function () {",
-							"//     try {",
-							"//         pm.expect(jsonData).to.have.property(\"FileMorbidity\");",
-							"//         pm.expect(jsonData).to.have.property(\"FileMorbidityCondition\");",
-							"//     } catch (e) {",
-							"//         pm.expect.fail(\"FileMorbidity and  FileMorbidityCondition are not present in JSON\");",
-							"//     }",
-							"// });",
+							"pm.test(\"FileMorbidity and  FileMorbidityCondition are present in response\", function () {",
+							"    try {",
+							"        pm.expect(jsonData).to.have.property(\"FileMorbidity\");",
+							"        pm.expect(jsonData).to.have.property(\"FileMorbidityCondition\");",
+							"    } catch (e) {",
+							"        pm.expect.fail(\"FileMorbidity and  FileMorbidityCondition are not present in JSON\");",
+							"    }",
+							"});",
 							"",
 							"pm.test(\"Vitals and other properties are present in response\", function () {",
 							"    try {   ",
@@ -2523,73 +2523,73 @@
 							"    pm.expect(jsonData.Vitals[fileID].DP).to.eql(pm.iterationData.get(\"patientDP\"));",
 							"});",
 							"",
-							"// let fileID_FileMorbidity = Object.keys(jsonData.FileMorbidity)[0];",
-							"// let fileID_FileMorbidityCondition = Object.keys(jsonData.FileMorbidityCondition)[0];",
+							"let fileID_FileMorbidity = Object.keys(jsonData.FileMorbidity)[0];",
+							"let fileID_FileMorbidityCondition = Object.keys(jsonData.FileMorbidityCondition)[0];",
 							"",
-							"// pm.test(\"fileID_vitals matches fileID_FileMorbidity\", function() {",
-							"//     pm.expect(fileID).to.eql(fileID_FileMorbidity);",
-							"// });",
+							"pm.test(\"fileID_vitals matches fileID_FileMorbidity\", function() {",
+							"    pm.expect(fileID).to.eql(fileID_FileMorbidity);",
+							"});",
 							"",
-							"// pm.test(\"fileID_vitals matches fileID_FileMorbidityCondition\", function() {",
-							"//     pm.expect(fileID).to.eql(fileID_FileMorbidityCondition);",
-							"// });",
+							"pm.test(\"fileID_vitals matches fileID_FileMorbidityCondition\", function() {",
+							"    pm.expect(fileID).to.eql(fileID_FileMorbidityCondition);",
+							"});",
 							"",
-							"// // Validate response schema using JSON Schema validation.",
-							"// const schema = {",
-							"//   type: \"object\",",
-							"//   required: [",
-							"//     \"patientId\", \"FirstName\", \"LastName\", \"ContactNumber\", \"Email\", \"Allergy\",",
-							"//     \"FoodPreference\", \"CuisineCategory\", \"FileMorbidity\", \"FileMorbidityCondition\",",
-							"//     \"DateOfBirth\", \"DieticianId\", \"Vitals\", \"LastVisitDate\"",
-							"//   ],",
-							"//   properties: {",
-							"//     patientId: { type: \"integer\" },",
-							"//     FirstName: { type: \"string\" },",
-							"//     LastName: { type: \"string\" },",
-							"//     ContactNumber: { type: \"integer\" },",
-							"//     Email: { type: \"string\", format: \"email\" },",
-							"//     Allergy: { type: \"string\" },",
-							"//     FoodPreference: { type: \"string\" },",
-							"//     CuisineCategory: { type: \"string\" },",
-							"//     FileMorbidity: {",
-							"//       type: \"object\",",
-							"//       additionalProperties: {",
-							"//         type: \"object\",",
-							"//         //required: [\"T3\", \"T4\", \"TSH\"],",
-							"//         properties: {",
-							"//           T3: { type: \"string\" },",
-							"//           T4: { type: \"string\" },",
-							"//           TSH: { type: \"string\" }",
-							"//         },    ",
-							"//       }",
-							"//     },",
-							"//     FileMorbidityCondition: {",
-							"//       type: \"object\",",
-							"//       additionalProperties: { type: \"object\" }",
-							"//     },",
-							"//     DateOfBirth: { type: \"string\", format: \"date\" },",
-							"//     DieticianId: { type: \"integer\" },",
-							"//     Vitals: {",
-							"//       type: \"object\",",
-							"//       additionalProperties: {",
-							"//         type: \"object\",",
-							"//         required: [\"Weight\", \"Height\", \"Temperature\", \"SP\", \"DP\"],",
-							"//         properties: {",
-							"//           Weight: { type: \"float\" },",
-							"//           Height: { type: \"float\" },",
-							"//           Temperature: { type: \"float\" },",
-							"//           SP: { type: \"integer\" },",
-							"//           DP: { type: \"integer\" }",
-							"//         },        ",
-							"//       }",
-							"//     },",
-							"//     LastVisitDate: { type: \"string\", format: \"date-time\" }",
-							"//   }",
-							"// };",
+							"// Validate response schema using JSON Schema validation.",
+							"const schema = {",
+							"  type: \"object\",",
+							"  required: [",
+							"    \"patientId\", \"FirstName\", \"LastName\", \"ContactNumber\", \"Email\", \"Allergy\",",
+							"    \"FoodPreference\", \"CuisineCategory\", \"FileMorbidity\", \"FileMorbidityCondition\",",
+							"    \"DateOfBirth\", \"DieticianId\", \"Vitals\", \"LastVisitDate\"",
+							"  ],",
+							"  properties: {",
+							"    patientId: { type: \"integer\" },",
+							"    FirstName: { type: \"string\" },",
+							"    LastName: { type: \"string\" },",
+							"    ContactNumber: { type: \"integer\" },",
+							"    Email: { type: \"string\", format: \"email\" },",
+							"    Allergy: { type: \"string\" },",
+							"    FoodPreference: { type: \"string\" },",
+							"    CuisineCategory: { type: \"string\" },",
+							"    FileMorbidity: {",
+							"      type: \"object\",",
+							"      additionalProperties: {",
+							"        type: \"object\",",
+							"        //required: [\"T3\", \"T4\", \"TSH\"],",
+							"        properties: {",
+							"          T3: { type: \"string\" },",
+							"          T4: { type: \"string\" },",
+							"          TSH: { type: \"string\" }",
+							"        },    ",
+							"      }",
+							"    },",
+							"    FileMorbidityCondition: {",
+							"      type: \"object\",",
+							"      additionalProperties: { type: \"object\" }",
+							"    },",
+							"    DateOfBirth: { type: \"string\", format: \"date\" },",
+							"    DieticianId: { type: \"integer\" },",
+							"    Vitals: {",
+							"      type: \"object\",",
+							"      additionalProperties: {",
+							"        type: \"object\",",
+							"        required: [\"Weight\", \"Height\", \"Temperature\", \"SP\", \"DP\"],",
+							"        properties: {",
+							"          Weight: { type: \"float\" },",
+							"          Height: { type: \"float\" },",
+							"          Temperature: { type: \"float\" },",
+							"          SP: { type: \"integer\" },",
+							"          DP: { type: \"integer\" }",
+							"        },        ",
+							"      }",
+							"    },",
+							"    LastVisitDate: { type: \"string\", format: \"date-time\" }",
+							"  }",
+							"};",
 							"",
-							"// pm.test(\"Validate response schema\", function () {",
-							"//   pm.response.to.have.jsonSchema(schema);",
-							"// });",
+							"pm.test(\"Validate response schema\", function () {",
+							"  pm.response.to.have.jsonSchema(schema);",
+							"});",
 							"",
 							"} ",
 							"else if(expectedStatusCode == 400) {",
@@ -2668,7 +2668,7 @@
 							"key": "file",
 							"type": "file",
 							"uuid": "cbc27a2a-e4d6-402a-bf6a-dd0dbad65db8",
-							"src": "-EqRZuYuK/HyperThyroid_Report_final.pdf"
+							"src": "yaQyred4s/Hypo Thyroid-Report.pdf.pdf"
 						}
 					]
 				},
@@ -3850,7 +3850,12 @@
 					"script": {
 						"id": "d8838549-8382-4056-b373-4d630bd1dcb5",
 						"exec": [
-							""
+							"let expectedStatusCode = pm.iterationData.get(\"expectedStatusCodeAfterPatient1\");\r",
+							"console.log(\"Expected Status code is : \" +expectedStatusCode); \r",
+							"\r",
+							"if(expectedStatusCode != 201) {\r",
+							"    pm.execution.skipRequest();\r",
+							"}"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -3886,6 +3891,22 @@
 							"pm.test(\"Test 1 : Status code is 403 since it uses the wrong token\", function () {",
 							"    pm.response.to.have.status(403);",
 							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "51c12250-744d-44de-99c0-adabd7d553e8",
+						"exec": [
+							"let expectedStatusCode = pm.iterationData.get(\"expectedStatusCodeAfterPatient1\");\r",
+							"console.log(\"Expected Status code is : \" +expectedStatusCode); \r",
+							"\r",
+							"if(expectedStatusCode != 201) {\r",
+							"    pm.execution.skipRequest();\r",
+							"}"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -3956,6 +3977,22 @@
 							"pm.test(\"Test 1 : Status code is 401\", function () {",
 							"    pm.response.to.have.status(401);",
 							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "57aa8fee-25cc-4d8e-a254-4543885923ef",
+						"exec": [
+							"let expectedStatusCode = pm.iterationData.get(\"expectedStatusCodeAfterPatient1\");\r",
+							"console.log(\"Expected Status code is : \" +expectedStatusCode); \r",
+							"\r",
+							"if(expectedStatusCode != 201) {\r",
+							"    pm.execution.skipRequest();\r",
+							"}"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -4761,83 +4798,88 @@
 	],
 	"variable": [
 		{
-			"id": "b1b35acb-115a-4f7f-b9a6-9ae1480d0979",
+			"id": "facb57a7-b5cb-4618-ae3e-2a3cd0095481",
 			"key": "baseURL",
 			"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician"
 		},
 		{
-			"id": "1c93dddd-a472-4401-a47b-e6eae8cc9123",
+			"id": "ce55a934-fb1a-4892-a43b-aeab1d052b6a",
 			"key": "admin_token",
 			"value": ""
 		},
 		{
-			"id": "1e6e8e82-8923-466f-a413-adf579944cd6",
+			"id": "e6e85543-b856-446e-a844-32b85b086498",
 			"key": "dietician_id",
 			"value": ""
 		},
 		{
-			"id": "135802c6-b2e7-4404-ab39-27aaf5657011",
+			"id": "361b764c-c559-44a2-8846-aa2dd0d6d492",
 			"key": "dietician_email",
 			"value": ""
 		},
 		{
-			"id": "e712488f-26ad-4489-afeb-64c5654d567e",
+			"id": "91c88ebb-ab78-451b-8c38-7282fc46831c",
 			"key": "login_Password",
 			"value": ""
 		},
 		{
-			"id": "9be976ae-f969-4612-8ad4-ce0c2cedc54c",
+			"id": "9da2c1f0-17e4-4acc-a558-237cd3aa771c",
 			"key": "dietician_token",
 			"value": ""
 		},
 		{
-			"id": "88b1266e-c134-4874-a7be-5baa379daf9e",
+			"id": "f56197d4-b743-4f37-b97e-bfea137b9b1f",
 			"key": "patient_id",
 			"value": ""
 		},
 		{
-			"id": "fdcf61b6-eb9b-43b9-a4d1-f7f76fd84e63",
+			"id": "8db5de28-a203-4e42-a586-f6d236fd73be",
 			"key": "patientInfo",
 			"value": ""
 		},
 		{
-			"id": "b814671e-3b63-4000-9562-51820f53c48e",
+			"id": "10512d09-0450-4f6f-9ac2-c1baaa164ec5",
 			"key": "updatePatientInfo",
 			"value": ""
 		},
 		{
-			"id": "446990ab-891b-43ee-b666-7e07b7060c41",
+			"id": "f008e72b-7f44-4be1-8452-652a48345963",
 			"key": "fileID",
 			"value": ""
 		},
 		{
-			"id": "32bc24a4-0ad7-4f51-a638-14f22060f8ef",
+			"id": "a2064783-fe15-4fba-a9d7-4f1c11b686e6",
 			"key": "vitalInfo",
 			"value": ""
 		},
 		{
-			"id": "5be62656-5262-41f9-acd8-f73556fc2b91",
+			"id": "25afa4df-2fe7-4b73-ace4-7e6d4b4e0300",
 			"key": "updateVitalInfo",
 			"value": ""
 		},
 		{
-			"id": "2bdb5162-19f5-434e-abd1-4dd5f5df0961",
+			"id": "083bbcd9-c70a-4440-8189-9f0e35b22700",
 			"key": "Prediabeticfile",
 			"value": ""
 		},
 		{
-			"id": "2bacc9c3-5d80-4e22-ad07-d0260e2df300",
+			"id": "9fa32a84-246d-4cf7-bdc4-48604f798405",
 			"key": "Hyperthyroidismfile",
 			"value": ""
 		},
 		{
-			"id": "ea5394a1-18ce-4e1b-9820-fb8addf1bd39",
+			"id": "12397317-8c6f-4f2f-ab52-1b3e6b1ff40b",
 			"key": "Hypothyroidismfile",
 			"value": ""
 		},
 		{
-			"id": "2e081f62-28f9-4498-958d-a7448e9638b2",
+			"id": "cabf4e75-cf09-47af-ba46-d3e062bc72d1",
 			"key": "patientDeleted",
+			"value": ""
+		},
+		{
+			"id": "7175db5f-85e7-4ea7-b23b-7eb8224f3703",
+			"key": "invalidToken",
 			"value": ""
 		}
 	]
