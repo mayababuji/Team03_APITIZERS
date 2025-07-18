@@ -266,7 +266,10 @@
 			},
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "bearer",
+					"bearer": {
+						"token": "{{admin_token}}"
+					}
 				},
 				"method": "POST",
 				"header": [],
